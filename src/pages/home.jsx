@@ -6,7 +6,7 @@ import './home.css';
 
 const Home = () => {
   // Lấy base URL của API để tái sử dụng cho ảnh
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
   const IMAGE_BASE_URL = API_BASE_URL.replace(/\/api\/?$/, '');
 
   const [featuredGames, setFeaturedGames] = useState([]);

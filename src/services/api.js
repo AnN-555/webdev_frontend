@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+const API_ROOT = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = `${API_ROOT.replace(/\/+$/, '')}/api`;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -100,7 +101,7 @@ export const authAPI = {
 // Cart API (requires login)
 export const cartAPI = {
   getCart: async () => {
-    const response = await api.get('/cart');
+    const response = await api.get('/cart', { params: { t: Date.now() } });
     return response.data;
   },
   addToCart: async (gameId) => {
